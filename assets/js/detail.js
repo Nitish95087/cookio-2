@@ -23,11 +23,11 @@ const /** {NodeElement} */ $detailContainer = document.querySelector("[data-deta
 ACCESS_POINT += `/${window.location.search.slice(window.location.search.indexOf("=") + 1)}`;
 
 fetchData(null, data =>{
-   console.log(data);
     const {
      images: { LARGE, REGULAR, SMALL, THUMBNAIL},
      label: title,
      source: author,
+     ingredients = [],
      totalTime: cookingTime =0,
      calories =0,
      cuisineType = [],
@@ -40,9 +40,8 @@ fetchData(null, data =>{
 
     document.title = `${title} - Cook.io`;
     const /** {Object} */ banner =  LARGE ?? REGULAR ?? SMALL ?? THUMBNAIL;
-    const {uri: bannerUrl, width, height} = banner;
+    const {url: bannerUrl, width, height} = banner;
     const /** {Array} */ tags = [...cuisineType, ...dietLabels, ...dishType];
-
     let /** {String} */ tagElements = "";
     let /** {String} */ ingredientItems = "";
 
